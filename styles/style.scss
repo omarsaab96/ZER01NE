@@ -45,6 +45,12 @@ footer {
     text-align: center;
 }
 
+footer{
+    span{
+        font-family:'JetBrains Mono', monospace;
+    }
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -220,9 +226,10 @@ select {
     margin: 0.5rem 0 1rem;
     border-radius: 8px;
     border: 1px solid var(--gray);
-    background-color: var(--dark-bg);
+    background-color: var(--dark-gray);
     color: var(--light-text);
     font-size: 1rem;
+    resize:none;
 }
 
 input:focus,
@@ -231,6 +238,10 @@ select:focus {
     border-color: var(--neon-cyan);
     outline: none;
     box-shadow: 0 0 5px var(--neon-cyan);
+}
+
+form .actions{
+    text-align: right;
 }
 
 label {
@@ -245,7 +256,7 @@ label {
     align-items: stretch;
     justify-content: space-between;
     /* column-gap: 15px; */
-    margin:0 -10px;
+    margin: 0 -10px;
 }
 
 .card {
@@ -515,11 +526,17 @@ label {
 
 .twoCols {
     display: flex;
+    align-items: center;
     gap: 30px;
 }
 
 .twoCols .col {
-    flex: 0 0 50%;
+    flex: 0 0 calc(50% - 15px);
+
+    img{
+        width:100%;
+        display:block;
+    }
 }
 
 @keyframes spin {
@@ -557,8 +574,6 @@ label {
     border-radius: 10px;
 }
 
-
-
 .heroSection {
     display: flex;
     justify-content: center;
@@ -566,13 +581,20 @@ label {
     flex-direction: column;
     height: 100vh;
     text-align: center;
+    width:100%;
+    position: fixed;
 }
 
-.heroSection p {
+.bodyPaddingTop{
+    padding-top:100vh;
+}
+
+p {
     font-size: 20px;
 }
 
 .aboutSection {
+    position: relative;
     border-radius: 20px 20px 0 0;
     background-color: var(--dark-gray);
 }
@@ -606,7 +628,7 @@ label {
     height: 100%;
 }
 
-.servicesSection .card .cardContent h3{
+.servicesSection .card .cardContent h3 {
     font-weight: 400;
 }
 
@@ -614,8 +636,119 @@ label {
     box-shadow: none;
 }
 
-.techstackSection{
+.techstackSection {
     background-color: var(--dark-gray);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+
+    .images {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // flex-wrap: wrap;
+        // gap: 50px;
+        text-align: center;
+
+        img {
+            display:inline-block;
+            margin-right:30px;
+            margin-bottom:30px;
+            vertical-align: middle;
+            width: 80px;
+            height: 80px;
+            max-width: 80px;
+            max-height: 80px;
+            min-width: 50px;
+            min-height: 50px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(80%) contrast(0.5);
+            // transition:all 0.3s ease-in-out;
+            // margin:0 auto;
+
+            &:hover {
+                filter: grayscale(0);
+            }
+        }
+    }
+}
+
+.portfolioSection {
+    background-color: var(--dark-bg);
+    padding: 50px 0;
+
+    h2 {
+        // text-align: center;
+    }
+
+    .new-home_showcase_component {
+        background-color: var(--dark-bg);
+        position: relative;
+
+        .new-home_showcase_top-wrapper {
+            margin-bottom: 0;
+
+            .marquee-slider__list--item {
+                opacity: 0.6;
+            }
+        }
+
+        .webcounter {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.66);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--neon-cyan);
+            font-size: 24px;
+            z-index: 1;
+            border-radius: 25px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: calc(100% - 2px);
+                height: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                // inset: 1px;
+                border: 2px solid transparent;
+                background-image: conic-gradient(from var(--angle), rgba(51, 51, 51, 0.66) 80%, rgba(51, 51, 51, 0.66) 88%, #00f6ff 92%, #00f6ff 100%);
+                background-origin: border-box;
+                border-radius: 30px;
+                -webkit-mask:
+                    linear-gradient(black, black) content-box,
+                    linear-gradient(black, black);
+                mask: linear-gradient(black, black),
+                    linear-gradient(black, black);
+                -webkit-mask-clip: content-box, border-box;
+                mask-clip: content-box, border-box;
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                animation: spin 5s linear infinite forwards;
+            }
+        }
+    }
+}
+
+@property --angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+}
+
+@keyframes spin {
+    to {
+        --angle: 1turn;
+    }
+}
+
+.contactSection{
+    background-color: var(--gray);
 }
