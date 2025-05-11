@@ -326,17 +326,27 @@
                 brainstorm, we would love to hear from you.
               </p>
               <br><br>
-              <form>
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your Name">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="you@example.com">
-                <label for="message">Project summary</label>
-                <textarea id="message" rows="5" placeholder="Tell us about your project..."></textarea>
-                <div class="actions">
-                  <button class="btn-primary" type="submit">Let's Go!</button>
+              <div class="formContainer">
+                <form id="contactForm">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" placeholder="Your Name">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" placeholder="you@example.com">
+                  <label for="message">Project summary</label>
+                  <textarea id="message" rows="5" placeholder="Tell us about your project..."></textarea>
+                  <div class="actions">
+                    <button class="btn-primary" type="submit">Let's Go!</button>
+                  </div>
+                </form>
+                <div class="swalContainer">
+                  <div id="custom-swal" class="custom-swal">
+                    <div class="custom-swal-icon success">✔</div>
+                    <h2 class="custom-swal-title">Form Submitted!</h2>
+                    <p class="custom-swal-text">We have received your project summary. We'll be in touch soon.</p>
+                    <button id="custom-swal-close" class="btn-primary">OK</button>
+                  </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
 

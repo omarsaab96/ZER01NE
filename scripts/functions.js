@@ -4,7 +4,7 @@ $(document).ready(function () {
     const smoother = ScrollSmoother.create({
         smooth: 1, // seconds
         effects: true
-      });
+    });
 
     ScrollTrigger.create({
         trigger: ".heroSection",
@@ -87,6 +87,52 @@ $(document).ready(function () {
     }, 2000);
 
 
+    $('#contactForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const name = $('#name').val().trim();
+        const email = $('#email').val().trim();
+        const message = $('#message').val().trim();
+
+        if (!name) {
+            $('#name').addClass('error')
+            return false;
+        }
+        if (!email) {
+            $('#email').addClass('error')
+            return false;
+        }
+        if (!message) {
+            $('#message').addClass('error')
+            return false;
+        }
+
+        $.ajax({
+            url: '/scripts/contact.php',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ name, email, message }),
+            success: function (response) {
+                if (response.success) {
+                    $('#contactForm')[0].reset();
+                    $('#name, #email, #message').removeClass('error');
+                    $('#contactForm').slideUp();
+                    $('.swalContainer').slideDown();
+                } else {
+                    alert('Error: ' + (response.error || 'Email failed to send.'));
+                }
+            },
+            error: function () {
+                alert('Something went wrong. Please try again later.');
+            }
+
+        });
+    });
+
+    $('#custom-swal-close').on('click', function () {
+        $('#contactForm').slideDown();
+        $('.swalContainer').slideUp();
+    });
 });
 
 
