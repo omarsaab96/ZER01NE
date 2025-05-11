@@ -119,6 +119,7 @@ $(document).ready(function () {
                     $('#name, #email, #message').removeClass('error');
                     $('#contactForm').slideUp();
                     $('.swalContainer').slideDown();
+                    
                 } else {
                     alert('Error: ' + (response.error || 'Email failed to send.'));
                 }
@@ -129,7 +130,7 @@ $(document).ready(function () {
 
         });
 
-        $('.loaderDiv').fadeIn();
+        $('.loaderDiv').fadeOut();
     });
 
     $('#custom-swal-close').on('click', function () {
