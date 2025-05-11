@@ -107,6 +107,7 @@ $(document).ready(function () {
             return false;
         }
 
+        $('.loaderDiv').fadeIn();
         $.ajax({
             url: '/scripts/contact.php',
             method: 'POST',
@@ -127,6 +128,8 @@ $(document).ready(function () {
             }
 
         });
+
+        $('.loaderDiv').fadeIn();
     });
 
     $('#custom-swal-close').on('click', function () {
