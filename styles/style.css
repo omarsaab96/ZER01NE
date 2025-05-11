@@ -72,6 +72,20 @@ nav a {
   margin: 0 1rem;
   font-weight: 500;
   position: relative;
+  cursor: pointer;
+}
+nav a.prim {
+  color: var(--dark-bg);
+}
+nav a.prim::before {
+  background-color: var(--neon-cyan);
+  opacity: 1;
+}
+nav a.prim:hover {
+  color: var(--neon-cyan);
+}
+nav a.prim:hover::before {
+  background-color: var(--dark-gray);
 }
 
 nav a:hover {
@@ -513,13 +527,29 @@ label {
   border-radius: 0 0 6px 6px;
 }
 
+.loaderDiv {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 17, 17, 0.5);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.loaderDiv svg {
+  scale: 0.5;
+}
+
 .loader {
-  width: 25px;
-  height: 25px;
-  border: 3px solid transparent;
-  border-top: 3px solid var(--neon-cyan);
+  width: 50px;
+  height: 50px;
+  border: 5px solid transparent;
+  border-top: 5px solid var(--neon-cyan);
   border-radius: 50%;
-  animation: spin 0.5s linear infinite;
+  animation: spinloader 0.5s linear infinite;
 }
 
 .twoCols {
@@ -536,7 +566,7 @@ label {
   display: block;
 }
 
-@keyframes spin {
+@keyframes spinloader {
   0% {
     transform: rotate(0deg);
   }
@@ -553,7 +583,7 @@ label {
   }
 }
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 0px;
 }
 
 ::-webkit-scrollbar-track {
@@ -573,7 +603,7 @@ label {
   height: 100vh;
   text-align: center;
   width: 100%;
-  position: fixed;
+  transition: none !important;
 }
 
 .bodyPaddingTop {
@@ -680,21 +710,21 @@ p {
   color: var(--neon-cyan);
   font-size: 24px;
   z-index: 1;
-  border-radius: 25px;
+  border-radius: 15px;
 }
 .portfolioSection .new-home_showcase_component .webcounter::after {
   content: "";
   position: absolute;
   display: block;
   width: calc(100% - 2px);
-  height: 100%;
+  height: calc(100% - 2px);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: 2px solid transparent;
   background-image: conic-gradient(from var(--angle), rgba(51, 51, 51, 0.66) 80%, rgba(51, 51, 51, 0.66) 88%, #00f6ff 92%, #00f6ff 100%);
   background-origin: border-box;
-  border-radius: 30px;
+  border-radius: 15px;
   -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
   mask: linear-gradient(black, black), linear-gradient(black, black);
   -webkit-mask-clip: content-box, border-box;

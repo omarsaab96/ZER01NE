@@ -2,10 +2,17 @@ $(document).ready(function () {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
     const smoother = ScrollSmoother.create({
-        wrapper: '#smooth-wrapper',
-        content: '#smooth-content',
-        smooth: 1.5,
-        effects: true,
+        smooth: 1, // seconds
+        effects: true
+      });
+
+    ScrollTrigger.create({
+        trigger: ".heroSection",
+        start: "top top",
+        end: "bottom top",
+        pin: true,
+        pinSpacing: false,
+        invalidateOnRefresh: true,
     });
 
     AOS.init({ once: true });
@@ -43,5 +50,44 @@ $(document).ready(function () {
         loop: true, // set to false if you don’t want it to loop
         autoplay: true, // set to false if you want to control it manually
         path: 'images/animation3.json' // your animation file path
-      });
+    });
+
+    const animation2 = lottie.loadAnimation({
+        container: document.getElementById('myLottieAnimation2'), // the DOM element
+        renderer: 'svg', // 'svg', 'canvas', or 'html'
+        loop: true, // set to false if you don’t want it to loop
+        autoplay: true, // set to false if you want to control it manually
+        path: 'images/animation4.json' // your animation file path
+    });
+
+    const animation3 = lottie.loadAnimation({
+        container: document.getElementById('myLottieAnimation3'), // the DOM element
+        renderer: 'svg', // 'svg', 'canvas', or 'html'
+        loop: true, // set to false if you don’t want it to loop
+        autoplay: true, // set to false if you want to control it manually
+        path: 'images/animation5.json', // your animation file path,
+    });
+
+
+    $('.navlink').click(function () {
+        $('html, body').animate({
+            scrollTop: $('.' + $(this).data('section') + '').offset().top - 200
+        }, 1000);
+    })
+
+    $('.learnAboutUs').click(function () {
+        $('html, body').animate({
+            scrollTop: $('.aboutSection').offset().top - 200
+        }, 1000);
+    })
+
+
+    setTimeout(function () {
+        $('.loaderDiv').fadeOut();
+    }, 2000);
+
+
 });
+
+
+
