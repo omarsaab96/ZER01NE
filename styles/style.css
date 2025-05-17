@@ -124,7 +124,7 @@ h6 {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -171,7 +171,7 @@ h6 {
 
 .logo {
   text-decoration: none;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Audiowide", sans-serif;
   color: var(--neon-cyan);
   margin: 0;
 }
